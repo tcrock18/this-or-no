@@ -1,42 +1,19 @@
-import React, {Component} from 'react';
-import { StyleSheet, Text, TextInput, View} from 'react-native';
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
+import React from 'react';
+import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import AuthLoadingScreen from './screens/AuthLoadingScreen';
 
-export default class App extends Component {
-  state = {
-    phone: '',
-    name: '',
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <TextInput
-         placeholder="Phone Number"
-         style={styles.input}
-         />
+const AppStack = createStackNavigator({ Home: HomeScreen });
+const AuthStack = createStackNavigator({ Login: LoginScreen });
 
-        <TextInput
-         placeholder="Name"
-         style={styles.input}
-         />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+export default createAppContainer(createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
   },
-  input: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    width: '90%',
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-});
+  {
+    initialRouteName: 'AuthLoading',
+  }
+));
