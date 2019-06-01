@@ -72,7 +72,7 @@ export default class ChatScreen extends React.Component {
                 flexDirection: 'row',
                 width: '60%',
                 alignSelf: item.from === User.phone ? 'flex-end' : 'flex-start',
-                backgroundColor: item.from === User.phone ? '#00897b' : '#7cb342',
+                backgroundColor: item.from === User.phone ? '#FF594C' : '#74FFB8',
                 borderRadius: 5,
                 marginBottom: 10
             }}>

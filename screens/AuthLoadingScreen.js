@@ -17,7 +17,17 @@ export default class AuthLoadingScreen extends React.Component {
 
   componentWillMount() {
     // Initialize Firebase
-    
+    var firebaseConfig = {
+      apiKey: process.env.REACT_APP_API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      databaseURL: "https://this-or-no.firebaseio.com",
+      projectId: process.env.PROJECT_ID,
+      storageBucket: process.env.STORAGE_BUCKET,
+      messagingSenderId: process.env.MESSAGE_SENDER_ID,
+      appId: process.env.APP_ID
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
   }
 
   // Fetch the token from storage then navigate to our appropriate place
